@@ -40,6 +40,7 @@ export default StyleSheet.create({
     borderRadius: 22,
     padding: 16,
     marginBottom: 16,
+    alignItems: 'center',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
@@ -55,10 +56,13 @@ export default StyleSheet.create({
     marginBottom: 12,
   },
   activeIcon: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f0d66f',
   },
   inactiveIcon: {
     backgroundColor: '#ededed',
+  },
+  lockedIcon: {
+    backgroundColor: '#f3c4c4',
   },
   deviceName: {
     fontSize: 17,
@@ -74,7 +78,11 @@ export default StyleSheet.create({
     marginTop: 8,
     fontSize: 14,
     fontWeight: '700',
-    color: '#111111',
+    color: '#ffffff',
+    backgroundColor: '#000000',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 4,
     textTransform: 'uppercase',
   },
 });

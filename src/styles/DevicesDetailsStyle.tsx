@@ -57,6 +57,9 @@ export default StyleSheet.create({
   inactiveIcon: {
     backgroundColor: '#ebebeb',
   },
+  lockedIcon: {
+    backgroundColor: '#f3c4c4',
+  },
   deviceName: {
     fontSize: 28,
     fontWeight: '700',
@@ -67,7 +70,11 @@ export default StyleSheet.create({
   deviceStatus: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#111111',
+    color: '#ffffff',
+    backgroundColor: '#000000',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 4,
     marginBottom: 20,
   },
   actionRow: {

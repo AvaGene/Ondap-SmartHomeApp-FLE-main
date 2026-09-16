@@ -13,11 +13,10 @@ export default function HomeScreen({ navigation }: Props) {
       <View style={styles.container}>
         <View style={styles.headerRow}>
           <View style={styles.homeBadge}>
-            <MaterialCommunityIcons name="home" size={22} color="#111111" />
+            <MaterialCommunityIcons name="home" size={34} color="#111111" />
           </View>
           <View style={styles.headerTextWrap}>
             <Text style={styles.title}>Smart Home{"\n"}Dashboard</Text>
-            <Text style={styles.subtitle}>Welcome, Student!</Text>
           </View>
         </View>
 
@@ -47,7 +46,7 @@ export default function HomeScreen({ navigation }: Props) {
           </Pressable>
 
           <Pressable style={styles.card}>
-            <View style={[styles.deviceIconContainer, styles.darkAccent]}>
+            <View style={[styles.deviceIconContainer, styles.lockedAccent]}>
               <MaterialCommunityIcons name="door-closed" size={28} color="#111111" />
             </View>
             <Text style={styles.deviceName}>Door</Text>

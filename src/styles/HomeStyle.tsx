@@ -15,36 +15,29 @@ export default StyleSheet.create({
   },
   headerRow: {
     width: '100%',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 18,
   },
   homeBadge: {
-    width: 42,
-    height: 42,
-    borderRadius: 14,
+    width: 62,
+    height: 62,
+    borderRadius: 22,
     backgroundColor: '#f3f3f3',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 8,
-    alignSelf: 'flex-start',
+    marginRight: 10,
   },
   headerTextWrap: {
-    width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   title: {
     fontSize: 34,
     fontWeight: '700',
     lineHeight: 38,
     color: '#111111',
-    textAlign: 'left',
-  },
-  subtitle: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#111111',
+    textAlign: 'center',
   },
   grid: {
     width: '100%',
@@ -79,10 +72,14 @@ export default StyleSheet.create({
     marginBottom: 12,
   },
   lightAccent: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f0d66f',
   },
   darkAccent: {
     backgroundColor: '#efefef',
+  },
+  lockedAccent: {
+    backgroundColor: '#f3c4c4',
+    borderRadius: 22,
   },
   deviceName: {
     fontSize: 18,
@@ -94,7 +91,11 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.5,
-    color: '#111111',
+    color: '#ffffff',
+    backgroundColor: '#000000',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 4,
   },
   primaryButton: {
     width: '100%',

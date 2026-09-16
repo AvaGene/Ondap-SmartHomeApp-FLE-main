@@ -84,7 +84,7 @@ export default function DevicesScreen({ navigation }: Props) {
           </Pressable>
 
           <Pressable style={styles.deviceCard} onPress={() => navigation.navigate('DeviceDetails', { device: door })}>
-            <View style={[styles.iconContainer, styles.inactiveIcon]}>
+            <View style={[styles.iconContainer, styles.lockedIcon]}>
               <MaterialCommunityIcons name="door-closed" size={30} color="#111111" />
             </View>
             <Text style={styles.deviceName}>Front Door</Text>

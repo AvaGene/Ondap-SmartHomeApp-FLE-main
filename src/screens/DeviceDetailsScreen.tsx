@@ -21,7 +21,16 @@ export default function DeviceDetailsScreen({ route, navigation }: Props) {
         </View>
 
         <View style={styles.card}>
-          <View style={[styles.iconWrapper, selectedDevice.status === 'ON' ? styles.activeIcon : styles.inactiveIcon]}>
+          <View
+            style={[
+              styles.iconWrapper,
+              selectedDevice.status === 'ON'
+                ? styles.activeIcon
+                : selectedDevice.status === 'LOCKED'
+                  ? styles.lockedIcon
+                  : styles.inactiveIcon,
+            ]}
+          >
             <MaterialCommunityIcons name={selectedDevice.icon} size={46} color="#111111" />
           </View>
 
