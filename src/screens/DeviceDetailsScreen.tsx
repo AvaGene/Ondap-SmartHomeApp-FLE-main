@@ -2,35 +2,13 @@ import { View, Text, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useEffect, useState } from 'react';
-import type { DeviceItem, DeviceStatus, RootStackParamList } from '../StackNavigator';
+import type { RootStackParamList } from '../StackNavigator';
 import styles from '../styles/DevicesDetailsStyle';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'DeviceDetails'> & {
-  devices: DeviceItem[];
-  setDevices: React.Dispatch<React.SetStateAction<DeviceItem[]>>;
-};
+type Props = NativeStackScreenProps<RootStackParamList, 'DeviceDetails'>;
 
-export default function DeviceDetailsScreen({ route, navigation, devices, setDevices }: Props) {
-  const [selectedDevice, setSelectedDevice] = useState(route.params.device);
-
-  useEffect(() => {
-    const currentDevice = devices.find((device) => device.id === route.params.device.id);
-    setSelectedDevice(currentDevice ?? route.params.device);
-  }, [devices, route.params.device]);
-
-  const toggleDeviceState = () => {
-    const nextStatus: DeviceStatus =
-      selectedDevice.status === 'ON' ? 'OFF' : selectedDevice.status === 'OFF' ? 'ON' : 'LOCKED';
-
-    const updatedDevice = { ...selectedDevice, status: nextStatus };
-
-    setSelectedDevice(updatedDevice);
-    setDevices((currentDevices) =>
-      currentDevices.map((device) => (device.id === updatedDevice.id ? updatedDevice : device)),
-    );
-    navigation.navigate('Devices', { updatedDevice });
-  };
+export default function DeviceDetailsScreen({ route, navigation }: Props) {
+  const selectedDevice = route.params.device;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -51,15 +29,15 @@ export default function DeviceDetailsScreen({ route, navigation, devices, setDev
           <Text style={styles.deviceStatus}>Status: {selectedDevice.status}</Text>
 
           <View style={styles.actionRow}>
-            <Pressable style={styles.actionButton} onPress={toggleDeviceState}>
+            <View style={styles.actionButton}>
               <MaterialCommunityIcons name="power" size={18} color="#111111" />
-              <Text style={styles.actionText}>{selectedDevice.status === 'ON' ? 'Turn Off' : 'Turn On'}</Text>
-            </Pressable>
+              <Text style={styles.actionText}>Power</Text>
+            </View>
 
-            <Pressable style={styles.actionButton}>
+            <View style={styles.actionButton}>
               <MaterialCommunityIcons name="cog" size={18} color="#111111" />
               <Text style={styles.actionText}>Settings</Text>
-            </Pressable>
+            </View>
           </View>
         </View>
       </View>

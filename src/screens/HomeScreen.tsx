@@ -1,22 +1,13 @@
 import { View, Text, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { DeviceItem, RootStackParamList } from '../StackNavigator';
+import type { RootStackParamList } from '../StackNavigator';
 import styles from '../styles/HomeStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'> & {
-  devices: DeviceItem[];
-};
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-export default function HomeScreen({ navigation, devices }: Props) {
-  const homeDevices = [
-    { ...devices.find((device) => device.id === 'light')!, label: 'Light', icon: 'lightbulb', accent: 'light' },
-    { ...devices.find((device) => device.id === 'fan')!, label: 'Fan', icon: 'fan', accent: 'dark' },
-    { ...devices.find((device) => device.id === 'ac')!, label: 'AC', icon: 'snowflake', accent: 'dark' },
-    { ...devices.find((device) => device.id === 'door')!, label: 'Door', icon: 'door-closed', accent: 'dark' },
-  ];
-
+export default function HomeScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -31,15 +22,37 @@ export default function HomeScreen({ navigation, devices }: Props) {
         </View>
 
         <View style={styles.grid}>
-          {homeDevices.map((device) => (
-            <Pressable key={device.id} style={styles.card}>
-              <View style={[styles.deviceIconContainer, device.accent === 'light' ? styles.lightAccent : styles.darkAccent]}>
-                <MaterialCommunityIcons name={device.icon as any} size={28} color="#111111" />
-              </View>
-              <Text style={styles.deviceName}>{device.label}</Text>
-              <Text style={styles.deviceStatus}>{device.status}</Text>
-            </Pressable>
-          ))}
+          <Pressable style={styles.card}>
+            <View style={[styles.deviceIconContainer, styles.lightAccent]}>
+              <MaterialCommunityIcons name="lightbulb" size={28} color="#111111" />
+            </View>
+            <Text style={styles.deviceName}>Light</Text>
+            <Text style={styles.deviceStatus}>ON</Text>
+          </Pressable>
+
+          <Pressable style={styles.card}>
+            <View style={[styles.deviceIconContainer, styles.darkAccent]}>
+              <MaterialCommunityIcons name="fan" size={28} color="#111111" />
+            </View>
+            <Text style={styles.deviceName}>Fan</Text>
+            <Text style={styles.deviceStatus}>OFF</Text>
+          </Pressable>
+
+          <Pressable style={styles.card}>
+            <View style={[styles.deviceIconContainer, styles.darkAccent]}>
+              <MaterialCommunityIcons name="snowflake" size={28} color="#111111" />
+            </View>
+            <Text style={styles.deviceName}>AC</Text>
+            <Text style={styles.deviceStatus}>OFF</Text>
+          </Pressable>
+
+          <Pressable style={styles.card}>
+            <View style={[styles.deviceIconContainer, styles.darkAccent]}>
+              <MaterialCommunityIcons name="door-closed" size={28} color="#111111" />
+            </View>
+            <Text style={styles.deviceName}>Door</Text>
+            <Text style={styles.deviceStatus}>LOCKED</Text>
+          </Pressable>
         </View>
 
         <Pressable style={styles.primaryButton} onPress={() => navigation.navigate('Devices')}>
