@@ -1,11 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import styles from '../styles/DevicesStyle';
 
 export default function DevicesScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Device Screen</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>Device Screen</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
