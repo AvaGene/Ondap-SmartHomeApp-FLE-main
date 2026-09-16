@@ -16,6 +16,7 @@ export default StyleSheet.create({
   headerRow: {
     width: '100%',
     alignItems: 'flex-start',
+    justifyContent: 'center',
     marginBottom: 18,
   },
   homeBadge: {
@@ -26,9 +27,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
+    alignSelf: 'flex-start',
   },
   headerTextWrap: {
     width: '100%',
+    alignItems: 'flex-start',
   },
   title: {
     fontSize: 34,

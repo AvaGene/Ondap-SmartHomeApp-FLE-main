@@ -1,9 +1,95 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#f3f3f3',
+  },
   container: {
     flex: 1,
+    backgroundColor: '#f3f3f3',
+    paddingHorizontal: 18,
+    paddingTop: 18,
+    paddingBottom: 24,
+  },
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 18,
+  },
+  backButton: {
+    width: 36,
+    height: 36,
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: 8,
+  },
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#111111',
+  },
+  card: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+    borderRadius: 26,
+    paddingHorizontal: 22,
+    paddingVertical: 26,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  iconWrapper: {
+    width: 120,
+    height: 120,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  activeIcon: {
+    backgroundColor: '#f0d66f',
+  },
+  inactiveIcon: {
+    backgroundColor: '#ebebeb',
+  },
+  deviceName: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#111111',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  deviceStatus: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#111111',
+    marginBottom: 20,
+  },
+  actionRow: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  actionButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 16,
+    paddingVertical: 14,
+    marginHorizontal: 6,
+  },
+  actionText: {
+    marginLeft: 8,
+    color: '#111111',
+    fontWeight: '700',
+    fontSize: 14,
   },
 });

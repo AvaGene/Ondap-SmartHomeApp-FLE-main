@@ -1,20 +1,22 @@
 import { View, Text, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '../StackNavigator';
+import type { DeviceItem, RootStackParamList } from '../StackNavigator';
 import styles from '../styles/HomeStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'> & {
+  devices: DeviceItem[];
+};
 
-const devices = [
-  { name: 'Light', icon: 'lightbulb', status: 'ON', accent: 'light' },
-  { name: 'Fan', icon: 'fan', status: 'OFF', accent: 'dark' },
-  { name: 'AC', icon: 'snowflake', status: 'OFF', accent: 'dark' },
-  { name: 'Door', icon: 'door-closed', status: 'LOCKED', accent: 'dark' },
-] as const;
+export default function HomeScreen({ navigation, devices }: Props) {
+  const homeDevices = [
+    { ...devices.find((device) => device.id === 'light')!, label: 'Light', icon: 'lightbulb', accent: 'light' },
+    { ...devices.find((device) => device.id === 'fan')!, label: 'Fan', icon: 'fan', accent: 'dark' },
+    { ...devices.find((device) => device.id === 'ac')!, label: 'AC', icon: 'snowflake', accent: 'dark' },
+    { ...devices.find((device) => device.id === 'door')!, label: 'Door', icon: 'door-closed', accent: 'dark' },
+  ];
 
-export default function HomeScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -29,27 +31,18 @@ export default function HomeScreen({ navigation }: Props) {
         </View>
 
         <View style={styles.grid}>
-          {devices.map((device) => (
-            <Pressable key={device.name} style={styles.card}>
-              <View
-                style={[
-                  styles.deviceIconContainer,
-                  device.accent === 'light' ? styles.lightAccent : styles.darkAccent,
-                ]}
-              >
-                <MaterialCommunityIcons
-                  name={device.icon}
-                  size={28}
-                  color="#111111"
-                />
+          {homeDevices.map((device) => (
+            <Pressable key={device.id} style={styles.card}>
+              <View style={[styles.deviceIconContainer, device.accent === 'light' ? styles.lightAccent : styles.darkAccent]}>
+                <MaterialCommunityIcons name={device.icon as any} size={28} color="#111111" />
               </View>
-              <Text style={styles.deviceName}>{device.name}</Text>
+              <Text style={styles.deviceName}>{device.label}</Text>
               <Text style={styles.deviceStatus}>{device.status}</Text>
             </Pressable>
           ))}
         </View>
 
-        <Pressable style={styles.primaryButton} onPress={() => navigation.navigate('Device')}>
+        <Pressable style={styles.primaryButton} onPress={() => navigation.navigate('Devices')}>
           <MaterialCommunityIcons name="view-list" size={18} color="#ffffff" />
           <Text style={styles.primaryButtonText}>VIEW DEVICES</Text>
         </Pressable>
